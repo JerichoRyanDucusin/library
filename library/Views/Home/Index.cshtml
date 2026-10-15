@@ -1,8 +1,32 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "Home";
 }
 
-<div class="text-center">
-    <h1 class="display-4">HELLOOOO!!!!</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<section class="hero mb-4">
+    <p class="hero-kicker mb-2"><i class="bi bi-book-half"></i> Library Lending System</p>
+    <h1 class="display-5 mb-3">Every book and every member, in one place.</h1>
+    <p class="lead mb-4">Keep the catalogue and the membership list up to date: add new titles, correct a price, welcome a new member or clear out an old record.</p>
+    <a asp-controller="Books" asp-action="Index" class="btn btn-gold btn-lg me-2"><i class="bi bi-journal-bookmark"></i>Browse books</a>
+    <a asp-controller="Members" asp-action="Index" class="btn btn-outline-light btn-lg"><i class="bi bi-people"></i>View members</a>
+</section>
+
+<div class="row g-3">
+    <div class="col-md-6">
+        <a asp-controller="Books" asp-action="Index" class="home-tile card h-100 text-decoration-none">
+            <div class="card-body">
+                <i class="bi bi-journal-bookmark tile-icon"></i>
+                <h2 class="h4 mt-2">The catalogue</h2>
+                <p class="text-muted mb-0">Fiction, classics, textbooks, reference and poetry. Add a book, edit its details or remove it.</p>
+            </div>
+        </a>
+    </div>
+    <div class="col-md-6">
+        <a asp-controller="Members" asp-action="Index" class="home-tile card h-100 text-decoration-none">
+            <div class="card-body">
+                <i class="bi bi-people tile-icon"></i>
+                <h2 class="h4 mt-2">The members</h2>
+                <p class="text-muted mb-0">Students, faculty and regular members, each with contact details and a join date.</p>
+            </div>
+        </a>
+    </div>
 </div>

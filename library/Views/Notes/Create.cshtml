@@ -1,0 +1,29 @@
+﻿@model Note
+@{
+    ViewData["Title"] = "Add a note";
+}
+
+<div class="form-card card mx-auto">
+    <div class="card-header"><i class="bi bi-journal-plus"></i>Add a note</div>
+
+    <form asp-action="Create" method="post" class="card-body p-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label">Title</label>
+            <input asp-for="Title" class="form-control" maxlength="100" />
+            <span asp-validation-for="Title" class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Body" class="form-label">Details (optional)</label>
+            <textarea asp-for="Body" class="form-control" rows="5"></textarea>
+            <span asp-validation-for="Body" class="text-danger"></span>
+        </div>
+
+        <div class="d-flex gap-2 mt-4">
+            <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i>Save</button>
+            <a asp-action="Index" class="btn btn-link">Cancel</a>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,25 @@
+﻿@model Note
+@{
+    ViewData["Title"] = "Delete a note";
+}
+
+<div class="form-card delete-card card mx-auto">
+    <div class="card-header"><i class="bi bi-trash"></i>Delete a note</div>
+
+    <div class="card-body p-4">
+        <p class="mb-3">Are you sure you want to delete this note?</p>
+        <dl class="row mb-2">
+            <dt class="col-4">Title</dt>
+            <dd class="col-8">@Model.Title</dd>
+            <dt class="col-4">Created</dt>
+            <dd class="col-8">@Model.CreatedOn.ToString("yyyy-MM-dd")</dd>
+            <dt class="col-4">Details</dt>
+            <dd class="col-8" style="white-space: pre-line">@(string.IsNullOrWhiteSpace(Model.Body) ? "—" : Model.Body)</dd>
+        </dl>
+
+        <form asp-action="Delete" asp-route-id="@Model.NoteId" method="post" class="d-flex gap-2 mt-3">
+            <button type="submit" class="btn btn-danger"><i class="bi bi-trash"></i>Delete</button>
+            <a asp-action="Index" class="btn btn-link">Cancel</a>
+        </form>
+    </div>
+</div>

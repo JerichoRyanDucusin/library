@@ -109,16 +109,23 @@ public class MembersController : Controller
     {
         try
         {
-            await _members.DeleteAsync(id);
+            // 1. Delete the member.
         }
-        catch (PostgresException ex) when (ex.SqlState == PostgresErrorCodes.ForeignKeyViolation)
+        catch (PostgresException ex) when (/* 2. the database refused because of a foreign key */)
         {
-            // The member still has loans, and the database refuses to delete them.
-            TempData["Error"] = "That member still has loans, so they cannot be deleted.";
+            // 3. Load the member again, to show them on the page.
+            if (/* 4. there is no such member */)
+            {
+                // 5. Answer "not found".
+            }
+            // 6. Set the message the page will show.
+            // 7. Show the Delete page again, with the member.
         }
 
-        return RedirectToAction(nameof(Index));
+        // 8. The member was deleted: go back to the list.
     }
+
+
 
     // Checks that go beyond the model's own rules.
     private void CheckMember(Member member)

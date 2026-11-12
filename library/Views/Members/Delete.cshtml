@@ -5,6 +5,12 @@
 
 <div class="form-card delete-card card mx-auto">
     <div class="card-header"><i class="bi bi-trash"></i>Delete a member</div>
+            @if (ViewBag.Error != null)
+        {
+            <div class="alert alert-danger d-flex align-items-center gap-2">
+                <i class="bi bi-exclamation-triangle-fill"></i><span>@ViewBag.Error</span>
+            </div>
+        }
 
     <div class="card-body p-4">
         @if (ViewBag.Error != null)

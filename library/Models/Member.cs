@@ -16,6 +16,7 @@ public class Member
     public string? Email { get; set; }               // email        VARCHAR(120), may be NULL, UNIQUE
 
     public string MemberType { get; set; } = "";     // member_type  VARCHAR(10) NOT NULL
+    public long OpenLoans { get; set; }   // Task 11: filled only by the member list; never saved
     public string? Phone { get; set; }       // phone, may be NULL
     public string? JoinDate { get; set; }    // join_date
 }

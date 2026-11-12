@@ -3,37 +3,38 @@
     ViewData["Title"] = Model.Member.name;
 }
 
-<h1 class="mb-1">@Model.Member.name</h1>
-<p class="text-muted">@Model.Member.MemberType · @(string.IsNullOrEmpty(Model.Member.Email) ? "no email" : Model.Member.Email)</p>
+<div class="member-head">
+    <i class="bi bi-person-circle avatar"></i>
+    <div>
+        <h1 class="h3 mb-0">@Model.Member.name</h1>
+        <div class="text-muted">@Model.Member.MemberType · @(string.IsNullOrEmpty(Model.Member.Email) ? "no email" : Model.Member.Email)</div>
+    </div>
+</div>
 
-<h2 class="h5 mt-4">Loans</h2>
+<h2 class="h5 mb-3"><i class="bi bi-clock-history"></i> Loans</h2>
 @if (Model.Loans.Count == 0)
 {
-    <p>This member has never borrowed a book.</p>
+    <div class="alert alert-secondary"><i class="bi bi-info-circle"></i> This member has never borrowed a book.</div>
 }
 else
 {
-    <table class="table table-striped align-middle">
-        <thead class="table-dark">
-            <tr>
-                <th>Book</th>
-                <th>Loaned</th>
-                <th>Returned</th>
-                <th>Status</th>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var loan in Model.Loans)
-            {
-                <tr>
-                    <td>@loan.BookTitle</td>
-                    <td>@(loan.LoanedOn.ToString("yyyy-MM-dd"))</td>
-                    <td>@(loan.ReturnedOn?.ToString("yyyy-MM-dd") ?? "—")</td>
-                    <td>@loan.Status</td>
-                </tr>
-            }
-        </tbody>
-    </table>
+    <div class="row g-3">
+        @foreach (var loan in Model.Loans)
+        {
+            <div class="col-12 col-md-6">
+                <div class="loan-card @loan.Status.ToLower() p-3">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <p class="loan-title">@loan.BookTitle</p>
+                        <span class="status-pill @loan.Status.ToLower()">@loan.Status</span>
+                    </div>
+                    <div class="loan-dates mt-2">
+                        <div><i class="bi bi-calendar-check"></i> Loaned @(loan.LoanedOn.ToString("yyyy-MM-dd"))</div>
+                        <div><i class="bi bi-box-arrow-in-left"></i> Returned @(loan.ReturnedOn?.ToString("yyyy-MM-dd") ?? "—")</div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
 }
 
-<a asp-action="Index" class="btn btn-link px-0">Back to members</a>
+<a asp-action="Index" class="btn btn-link px-0 mt-3"><i class="bi bi-arrow-left"></i> Back to members</a>

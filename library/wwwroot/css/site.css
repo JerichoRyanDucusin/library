@@ -329,3 +329,169 @@ h1, h2, h3, .navbar-brand {
         background: #e4e0f0;
         color: #443d73;
     }
+/* ===== Activity 11: loans, borrow, member loans, messages ===== */
+.summary-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: .75rem;
+    margin-bottom: 1.25rem;
+}
+
+.summary-tile {
+    border-radius: .75rem;
+    padding: .9rem 1rem;
+    background: #fff;
+    border: 1px solid #e3e0d6;
+    border-left-width: 6px;
+}
+
+    .summary-tile .num {
+        font-size: 1.8rem;
+        font-weight: 700;
+        line-height: 1;
+    }
+
+    .summary-tile .lbl {
+        font-size: .8rem;
+        text-transform: uppercase;
+        letter-spacing: .06em;
+        color: #6b6b60;
+    }
+
+    .summary-tile.out {
+        border-left-color: #2f6f4f;
+    }
+
+    .summary-tile.overdue {
+        border-left-color: #b8860b;
+    }
+
+    .summary-tile.returned {
+        border-left-color: #8a8f87;
+    }
+
+.loan-card {
+    border: 1px solid #e3e0d6;
+    border-left-width: 6px;
+    border-radius: .75rem;
+    background: #fff;
+    height: 100%;
+}
+
+    .loan-card.out {
+        border-left-color: #2f6f4f;
+    }
+
+    .loan-card.overdue {
+        border-left-color: #b8860b;
+        background: #fffaf0;
+    }
+
+    .loan-card.returned {
+        border-left-color: #8a8f87;
+    }
+
+    .loan-card .loan-title {
+        font-weight: 600;
+        margin: 0;
+    }
+
+    .loan-card .loan-member {
+        color: #6b6b60;
+        font-size: .9rem;
+    }
+
+    .loan-card .loan-dates {
+        font-size: .85rem;
+        color: #55554d;
+    }
+
+.status-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: .3rem;
+    padding: .2rem .65rem;
+    border-radius: 999px;
+    font-size: .78rem;
+    font-weight: 600;
+}
+
+    .status-pill.out {
+        background: #e3f1e9;
+        color: #1f5a3c;
+    }
+
+    .status-pill.overdue {
+        background: #fbefcf;
+        color: #7a5a06;
+    }
+
+    .status-pill.returned {
+        background: #ecedea;
+        color: #55574f;
+    }
+
+.borrow-card {
+    max-width: 38rem;
+    margin: 0 auto;
+    border: 1px solid #e3e0d6;
+    border-radius: 1rem;
+    overflow: hidden;
+}
+
+    .borrow-card .card-header {
+        background: #2f6f4f;
+        color: #fff;
+        font-weight: 600;
+    }
+
+    .borrow-card .input-group-text {
+        background: #f3f1ea;
+    }
+
+.member-head {
+    background: #fff;
+    border: 1px solid #e3e0d6;
+    border-radius: 1rem;
+    padding: 1.25rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    margin-bottom: 1.25rem;
+}
+
+    .member-head .avatar {
+        font-size: 2.6rem;
+        color: #2f6f4f;
+    }
+
+/* messages: the red message on the Delete page and the form messages */
+.alert-danger {
+    background: #fdecea;
+    border: 1px solid #f1b8b2;
+    border-left: 6px solid #c0392b;
+    color: #7b1f16;
+    border-radius: .6rem;
+}
+
+.text-danger, .field-validation-error {
+    color: #b03a2e !important;
+    font-size: .85rem;
+}
+
+    .field-validation-error::before {
+        content: "\26A0\FE0E ";
+    }
+
+.input-validation-error {
+    border-color: #c0392b !important;
+    background: #fff8f7;
+}
+
+.validation-summary-errors {
+    background: #fdecea;
+    border-left: 6px solid #c0392b;
+    border-radius: .6rem;
+    padding: .6rem .9rem;
+    color: #7b1f16;
+}

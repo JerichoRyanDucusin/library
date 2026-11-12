@@ -36,6 +36,7 @@
                         <li><i class="bi bi-envelope"></i><span class="text-break">@(string.IsNullOrEmpty(member.Email) ? "—" : member.Email)</span></li>
                         <li><i class="bi bi-telephone"></i><span>@(string.IsNullOrEmpty(member.Phone) ? "—" : member.Phone)</span></li>
                         <li><i class="bi bi-calendar3"></i><span>Joined @member.JoinDate</span></li>
+                        <li><i class="bi bi-book"></i>Books out: <strong>@member.OpenLoans</strong></li>
                     </ul>
                 </div>
                 <div class="card-footer d-flex justify-content-end gap-2">

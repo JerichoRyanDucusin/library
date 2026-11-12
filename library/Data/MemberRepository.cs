@@ -42,11 +42,15 @@ public class MemberRepository
             : DateOnly.FromDateTime(DateTime.Today);
     }
 
-    // READ: every member, sorted by name.
+    // READ: every member, with how many books each has out now.
     public async Task<List<Member>> GetAllAsync()
     {
-        const string sql = "SELECT member_id, name, email, phone, member_type, join_date " +
-                           "FROM lending.member ORDER BY name;";
+        const string sql =
+            "SELECT m.member_id, m.name, m.email, m.phone, m.member_type, m.join_date, COUNT(l.loan_id) " +
+            "FROM lending.member m " +
+            "LEFT JOIN lending.loan l ON l.member_id = m.member_id AND l.returned_on IS NULL " +
+            "GROUP BY m.member_id " +
+            "ORDER BY m.name;";
 
         var members = new List<Member>();
 
@@ -55,7 +59,9 @@ public class MemberRepository
 
         while (await reader.ReadAsync())
         {
-            members.Add(ReadMember(reader));
+            var member = ReadMember(reader);
+            member.OpenLoans = reader.GetInt64(6);
+            members.Add(member);
         }
 
         return members;
@@ -120,4 +126,5 @@ public class MemberRepository
 
         await command.ExecuteNonQueryAsync();
     }
+
 }

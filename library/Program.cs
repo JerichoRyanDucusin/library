@@ -18,6 +18,7 @@ builder.Services.AddSingleton(dataSource);
 builder.Services.AddScoped<BookRepository>();
 builder.Services.AddScoped<MemberRepository>();
 builder.Services.AddScoped<NoteRepository>();
+builder.Services.AddScoped<LoanRepository>();
 
 
 
